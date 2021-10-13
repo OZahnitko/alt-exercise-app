@@ -33,11 +33,20 @@ export const DaySummaryContainer = {
 
     height: 40px;
 
+    margin-right: 0.5rem;
+
     width: 40px;
+  `,
+  HeaderControls: styled.div`
+    display: flex;
+
+    & :last-child {
+      margin-right: 0;
+    }
   `,
   HeaderText: styled.div``,
   Wrapper: styled.div`
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
   `,
 };
 
@@ -51,7 +60,7 @@ export const WeekSummaryContainer = {
 
     overflow: hidden auto;
 
-    padding: 1rem;
+    padding: 0 1rem 1rem 1rem;
   `,
 };
 

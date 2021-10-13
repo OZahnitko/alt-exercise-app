@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { MenuIcon } from "../../components";
 import {
@@ -7,8 +7,21 @@ import {
   StyledAvatarProgress,
   Wrapper,
 } from "./Styles";
+import { fetchLocalStorageUsername } from "../../utility";
 
 const AppHeader = () => {
+  const [username, setUsername] = useState<string | null>(null);
+
+  const handleFetchUsername = async () => {
+    const username = await fetchLocalStorageUsername();
+
+    setUsername(() => username);
+  };
+
+  useEffect(() => {
+    handleFetchUsername();
+  }, []);
+
   return (
     <Wrapper>
       <AppHeaderControls.Wrapper>
@@ -22,7 +35,7 @@ const AppHeader = () => {
         </AppHeaderContent.AvatarContainer>
         <AppHeaderContent.TextContainer>
           <AppHeaderContent.TextContainerUpper>
-            <h2>Sasha Zahnitko</h2>
+            <h2>{username}</h2>
           </AppHeaderContent.TextContainerUpper>
           <AppHeaderContent.TextContainerLower>
             <div
@@ -36,7 +49,7 @@ const AppHeader = () => {
                 width: "45px",
               }}
             >
-              30m
+              30
             </div>
             <div
               style={{
@@ -49,7 +62,7 @@ const AppHeader = () => {
                 width: "45px",
               }}
             >
-              400c
+              400
             </div>
             <div
               style={{

@@ -1,10 +1,10 @@
-export interface ArrowIcon {
-  direction: ArrowIconDirection;
+export interface ArrowIconProps {
+  direction?: ArrowIconDirection;
 }
 
 export enum ArrowIconDirection {
-  up,
-  right,
-  down,
-  left,
+  up = "up",
+  right = "right",
+  down = "down",
+  left = "left",
 }
