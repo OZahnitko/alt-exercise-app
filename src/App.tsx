@@ -1,18 +1,17 @@
-import { AnimateSharedLayout } from "framer-motion";
-
 import { AppHeader } from "./components";
-import { AppContentContainer, AppHeaderContainer, RootWrapper } from "./Styles";
+import { Homepage } from "./pages";
+import { ContentContainer, HeaderContainer, RootWrapper } from "./Styles";
 
 const App = () => {
   return (
-    <AnimateSharedLayout type="switch">
-      <RootWrapper layout>
-        <AppHeaderContainer layout>
-          <AppHeader />
-        </AppHeaderContainer>
-        <AppContentContainer layout></AppContentContainer>
-      </RootWrapper>
-    </AnimateSharedLayout>
+    <RootWrapper>
+      <HeaderContainer>
+        <AppHeader />
+      </HeaderContainer>
+      <ContentContainer>
+        <Homepage />
+      </ContentContainer>
+    </RootWrapper>
   );
 };
 

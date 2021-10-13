@@ -1,50 +1,74 @@
-import { motion, MotionProps } from "framer-motion";
-import { FC } from "react";
 import styled from "styled-components";
 
-interface AppHeaderContentWrapper extends MotionProps {
-  contentHidden: boolean;
-}
+// Wrapper
+export const Wrapper = styled.div`
+  background-color: #f9be7c;
+  border-radius: 0 0 35px 35px;
 
-export const AppHeaderContent = {
-  AvatarIconContainer: styled.div`
-    border: 1px solid black;
+  padding: 1rem;
+`;
 
-    height: 80px;
-
-    width: 80px;
+// App Header Controls
+export const AppHeaderControls = {
+  IconContainer: styled.div`
+    display: flex;
   `,
-  AvatarNameContainer: styled.div`
-    align-items: center;
 
-    border: 1px solid blue;
+  Wrapper: styled.div`
+    display: flex;
+  `,
+};
 
+// App Header Content
+export const AppHeaderContent = {
+  AvatarContainer: styled.div`
+    margin-left: 1rem;
+  `,
+  TextContainer: styled.div`
     display: flex;
 
     flex: 1;
     flex-direction: column;
 
-    justify-content: center;
+    justify-content: space-between;
 
-    word-break: break-all;
+    margin-left: 1rem;
+
+    word-break: break-word;
   `,
-  Wrapper: styled<FC<AppHeaderContentWrapper>>(motion.div)`
+  TextContainerLower: styled.div`
+    color: #fff9eb;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-weight: bold;
+  `,
+  TextContainerUpper: styled.div``,
+  Wrapper: styled.div`
+    display: flex;
+
+    margin-top: 16px;
+  `,
+};
+
+// Avatar Progress Component
+export const StyledAvatarProgress = {
+  AvatarContainer: styled.div`
+    background-color: #6588e4;
+
+    clip-path: circle();
+
+    display: flex;
+
+    position: absolute;
+  `,
+  Wrapper: styled.div`
     align-items: center;
 
     display: flex;
 
-    margin-top: ${(props) => (props.contentHidden ? 0 : 0.5)}rem;
-
-    transition: margin-top 0.25s ease-in-out;
+    justify-content: center;
   `,
 };
-
-export const AppHeaderControls = {
-  Wrapper: styled(motion.div)``,
-};
-
-export const Wrapper = styled(motion.div)`
-  background-color: #f9be7c;
-
-  padding: 1rem;
-`;
