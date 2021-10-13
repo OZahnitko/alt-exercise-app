@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { AnimateSharedLayout } from "framer-motion";
 
-function App() {
+import { AppHeader } from "./components";
+import { AppContentContainer, AppHeaderContainer, RootWrapper } from "./Styles";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AnimateSharedLayout type="switch">
+      <RootWrapper layout>
+        <AppHeaderContainer layout>
+          <AppHeader />
+        </AppHeaderContainer>
+        <AppContentContainer layout></AppContentContainer>
+      </RootWrapper>
+    </AnimateSharedLayout>
   );
-}
+};
 
 export default App;
