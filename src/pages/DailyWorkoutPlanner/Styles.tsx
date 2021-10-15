@@ -16,16 +16,24 @@ export const Wrapper = styled.div`
 
 interface ExerciseListContainerCardProps {
   expanded: boolean;
+  selected: boolean;
 }
 
 export const ExerciseListContainer = {
   Card: styled.div<ExerciseListContainerCardProps>`
+    align-items: center;
+
     background-color: #6588e4;
+    border: 4px solid #${(props) => (props.selected ? "F9BE7C" : "6588e4")};
     border-radius: 35px;
 
     color: #fff9eb;
 
+    display: flex;
+
     height: 10rem;
+
+    justify-content: center;
 
     padding: 1rem;
 

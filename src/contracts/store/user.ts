@@ -3,5 +3,5 @@ export declare namespace User {
     username: Username;
   }
 
-  export type Username = string | null;
+  export type Username = string | undefined;
 }

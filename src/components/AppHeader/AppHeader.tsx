@@ -16,7 +16,7 @@ import {
 import { fetchLocalStorageUsername } from "../../utility";
 
 const AppHeader = () => {
-  const [username, setUsername] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | undefined>(undefined);
 
   const history = useHistory();
   const location = useLocation();
@@ -24,7 +24,7 @@ const AppHeader = () => {
   const handleFetchUsername = async () => {
     const username = await fetchLocalStorageUsername();
 
-    setUsername(() => username);
+    setUsername(() => username || "NO_USERNAME");
   };
 
   useEffect(() => {

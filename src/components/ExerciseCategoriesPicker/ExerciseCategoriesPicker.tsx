@@ -82,11 +82,22 @@ export const CategoryChip = ({ category }: CategoryChipProps) => {
 };
 
 export const ResistanceAOEChip = ({ areaName }: { areaName: string }) => {
-  const { selectedResistanceAOE, setSelectedResistanceAOE } =
-    useDailyWorkoutPlannerHooks();
+  const {
+    selectedWorkoutExercises,
+    selectedResistanceAOE,
+    setSelectedResistanceAOE,
+  } = useDailyWorkoutPlannerHooks();
 
   return (
     <CategoryChipContainer.Wrapper
+      included={Array.from(
+        new Set(
+          selectedWorkoutExercises.reduce(
+            (acc, exercise) => [...acc, ...exercise.aoe],
+            [] as string[]
+          )
+        )
+      ).includes(areaName)}
       onClick={() =>
         setSelectedResistanceAOE(selectedResistanceAOE ? null : areaName)
       }

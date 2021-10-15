@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { User } from "../contracts";
 
-export const initialState: User.UserState = { username: null };
+export const initialState: User.UserState = { username: undefined };
 
 const userSlice = createSlice({
   name: "user",
