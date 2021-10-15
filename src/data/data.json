@@ -66,7 +66,13 @@
       "defaultValues": { "weight": 11 },
       "name": "incline walk",
       "type": ["cardio", "stretches"]
+    },
+    {
+      "aoe": ["shoulders", "traps"],
+      "defaultValues": { "weight": 50 },
+      "name": "converging shoulder press",
+      "type": ["resistance"]
     }
   ],
-  "lastEdited": "2021-10-14T19:01:12.000+10:00"
+  "lastEdited": "2021-10-15T19:01:12.000+10:00"
 }

@@ -45,9 +45,11 @@ export const fetchLocalStorageExercises = async (): Promise<Exercise[]> => {
   return data?.exercises || [];
 };
 
-export const fetchLocalStorageUsername = async (): Promise<string | null> => {
+export const fetchLocalStorageUsername = async (): Promise<
+  string | undefined
+> => {
   const data: { username: string } | null = await localForage.getItem("data");
-  return data?.username || "no username";
+  return data?.username;
 };
 
 export const setLocalStorageUsername = async (

@@ -66,9 +66,24 @@ export const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
           ? removeExercise(exercise)
           : addExercise(exercise)
       }
+      selected={
+        !!selectedWorkoutExercises.find((e) => e.name === exercise.name)
+      }
       {...handlers}
     >
-      <div>{exercise.name}</div>
+      {expanded ? (
+        <ExerciseCardExpandedContent exercise={exercise} />
+      ) : (
+        <h2>{exercise.name}</h2>
+      )}
     </ExerciseListContainer.Card>
   );
+};
+
+export const ExerciseCardExpandedContent = ({
+  exercise,
+}: {
+  exercise: Exercise;
+}) => {
+  return <div>Exercise Card Expanded Content for {exercise.name}</div>;
 };

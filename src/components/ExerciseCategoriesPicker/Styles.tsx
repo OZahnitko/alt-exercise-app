@@ -13,15 +13,17 @@ export const Wrapper = styled.div`
 // Category Chip
 
 interface CategoryChipContainerWrapper {
+  included?: boolean;
   selected: boolean;
 }
 
 export const CategoryChipContainer = {
   Wrapper: styled.div<CategoryChipContainerWrapper>`
-    background: ${(props) => (props.selected ? "#E46472" : "white")};
+    background: ${(props) =>
+      props.selected ? "#E46472" : props.included ? "#6588E4" : "white"};
     border-radius: 25px;
 
-    color: ${(props) => props.selected && "white"};
+    color: ${(props) => (props.selected || props.included) && "white"};
 
     padding: 0.5rem;
 
