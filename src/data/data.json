@@ -1,0 +1,72 @@
+{
+  "exercises": [
+    {
+      "aoe": ["legs", "lower back"],
+      "defaultValues": { "weight": 130 },
+      "name": "Dead Lift",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["shoulders"],
+      "defaultValues": { "weight": 24 },
+      "name": "shoulder press",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["legs"],
+      "defaultValues": { "weight": 100 },
+      "name": "squat",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["upper back", "lower back"],
+      "defaultValues": { "weight": 50 },
+      "name": "machine back pull",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["legs"],
+      "defaultValues": { "weight": 200 },
+      "name": "leg press",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["chest"],
+      "defaultValues": { "weight": 70 },
+      "name": "barbell bench press",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["chest"],
+      "defaultValues": { "weight": 28 },
+      "name": "dumbbell bench press",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["chest"],
+      "defaultValues": { "weight": 70 },
+      "name": "smith machine incline press",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["chest"],
+      "defaultValues": { "weight": 18 },
+      "name": "incline dumbbell flye",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["arms"],
+      "defaultValues": { "weight": 18 },
+
+      "name": "Bicep Curl",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["whole body"],
+      "defaultValues": { "weight": 11 },
+      "name": "incline walk",
+      "type": ["cardio", "stretches"]
+    }
+  ],
+  "lastEdited": "2021-10-14T19:01:12.000+10:00"
+}

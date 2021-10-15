@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import normalize from "styled-normalize";
 
 export const GlobalStyle = createGlobalStyle`
-  ${normalize}
+  ${normalize};
 
   * {
     box-sizing: border-box;
@@ -11,14 +11,10 @@ export const GlobalStyle = createGlobalStyle`
   html,
   body,
   #root {
-    background-color: #FFF9EB;
-
-    font-family: "Inter", sans-serif;
+    font-family: "Nunito", sans-serif;
     font-size: 16px;
 
     height: 100%;
-
-    line-height: 14px;
 
     margin: 0;
     max-height: 100%;
@@ -36,21 +32,7 @@ export const GlobalStyle = createGlobalStyle`
   h3 {
     margin: 0;
 
-    font-family: "Nunito", sans-serif;
-  
     padding: 0;
-  }
-
-  h1 {
-    font-size: 32px; 
-
-    line-height: 24px; 
-  }
-
-  h2 {
-    font-size: 24px;
-    
-    line-height: 18px; 
   }
 
   input {

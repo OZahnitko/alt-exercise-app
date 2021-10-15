@@ -1,22 +1,23 @@
-import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const AppContentContainer = styled(motion.div)`
-  border: 1px solid blue;
+export const ContentContainer = styled.div`
+  flex: 1;
 
   overflow: hidden auto;
-
-  flex: 1;
 `;
 
-export const AppHeaderContainer = styled(motion.div)``;
+export const HeaderContainer = styled.div``;
 
-export const RootWrapper = styled(motion.div)`
-  height: 100%;
+export const RootWrapper = styled.div`
+  background-color: #fff9eb;
+
+  color: #0d253f;
 
   display: flex;
 
   flex-direction: column;
+
+  height: 100%;
 
   overflow: hidden;
 `;

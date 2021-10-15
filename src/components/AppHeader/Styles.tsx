@@ -1,50 +1,110 @@
-import { motion, MotionProps } from "framer-motion";
-import { FC } from "react";
+import { TextField } from "@mui/material";
 import styled from "styled-components";
 
-interface AppHeaderContentWrapper extends MotionProps {
-  contentHidden: boolean;
-}
+// Wrapper
+export const Wrapper = styled.div`
+  background-color: #f9be7c;
+  border-radius: 0 0 35px 35px;
 
-export const AppHeaderContent = {
-  AvatarIconContainer: styled.div`
-    border: 1px solid black;
+  padding: 1rem;
+`;
 
-    height: 80px;
-
-    width: 80px;
+// App Header Controls
+export const AppHeaderControls = {
+  IconContainer: styled.div`
+    display: flex;
   `,
-  AvatarNameContainer: styled.div`
-    align-items: center;
 
-    border: 1px solid blue;
+  Wrapper: styled.div`
+    display: flex;
+  `,
+};
 
+// App Header Content
+export const AppHeaderContent = {
+  AvatarContainer: styled.div`
+    margin-left: 1rem;
+    margin-right: 1rem;
+  `,
+  InputContainer: styled.div`
+    margin: 0 1rem 1rem 1rem;
+
+    & :last-child {
+      margin-bottom: 0;
+    }
+  `,
+  TextContainer: styled.div`
     display: flex;
 
     flex: 1;
     flex-direction: column;
 
-    justify-content: center;
+    justify-content: space-between;
 
-    word-break: break-all;
+    word-break: break-word;
   `,
-  Wrapper: styled<FC<AppHeaderContentWrapper>>(motion.div)`
+  TextContainerLower: styled.div`
+    color: #fff9eb;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-weight: bold;
+  `,
+  TextContainerUpper: styled.div``,
+  Wrapper: styled.div`
+    display: flex;
+
+    margin-top: 16px;
+  `,
+};
+
+// Avatar Progress Component
+export const StyledAvatarProgress = {
+  AvatarContainer: styled.div`
+    background-color: #6588e4;
+
+    clip-path: circle();
+
+    display: flex;
+
+    position: absolute;
+  `,
+  Wrapper: styled.div`
     align-items: center;
 
     display: flex;
 
-    margin-top: ${(props) => (props.contentHidden ? 0 : 0.5)}rem;
-
-    transition: margin-top 0.25s ease-in-out;
+    justify-content: center;
   `,
 };
 
-export const AppHeaderControls = {
-  Wrapper: styled(motion.div)``,
-};
+export const StyledTextField = styled(TextField)`
+  & .MuiFormLabel-root {
+    color: #8c8980;
 
-export const Wrapper = styled(motion.div)`
-  background-color: #f9be7c;
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+  }
 
-  padding: 1rem;
+  & .MuiInputBase-input {
+    color: #0d253f;
+
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+
+    ::placeholder {
+    }
+  }
+
+  & .MuiInput-underline:before {
+    border-bottom: 1px solid #6588e4;
+  }
+
+  & .MuiInput-underline:after {
+    border-bottom: 2px solid #e46472;
+  }
+
+  margin-bottom: 0.5rem;
 `;
