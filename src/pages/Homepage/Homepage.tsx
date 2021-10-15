@@ -1,8 +1,10 @@
 import { DateTime } from "luxon";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import ReactSwipe from "react-swipe";
 
 import { ArrowIcon, PlusIcon } from "../../components";
-import { ArrowIconDirection } from "../../contracts";
+import { ArrowIconDirection, Routes } from "../../contracts";
 import { useAppHooks } from "../../hooks";
 import {
   DaySummaryComponent,
@@ -10,24 +12,32 @@ import {
   WeekSummaryContainer,
   Wrapper,
 } from "./Styles";
+
 import { getCurrentWeek } from "../../utility";
 
 const Homepage = () => {
-  const {
-    state: { currentDate },
-  } = useAppHooks();
+  const [currentWeek, setCurrentWeek] = useState<string[]>([]);
+
+  const history = useHistory();
+
+  const { currentDate, selectedDate, setSelectedDate } = useAppHooks();
+
+  useEffect(() => {
+    if (selectedDate) setCurrentWeek(() => getCurrentWeek(selectedDate));
+  }, []);
 
   return (
     <Wrapper>
       {/* TODO: Map the full week in here. */}
-      {currentDate && (
+      {!!currentWeek && (
         <ReactSwipe
           swipeOptions={{
             continuous: false,
-            startSlide: DateTime.fromISO(currentDate).weekday - 1,
+            startSlide: DateTime.fromISO(selectedDate).weekday - 1,
+            transitionEnd: (index) => setSelectedDate(currentWeek[index]),
           }}
         >
-          {getCurrentWeek(currentDate).map((day) => (
+          {currentWeek.map((day) => (
             <DaySummaryContainer.Wrapper key={day}>
               <DaySummaryContainer.Header>
                 <DaySummaryContainer.HeaderText>
@@ -41,7 +51,7 @@ const Homepage = () => {
                 </DaySummaryContainer.HeaderText>
                 <DaySummaryContainer.HeaderControls>
                   <DaySummaryContainer.HeaderButtonContainer
-                    onClick={() => console.log("add")}
+                    onClick={() => history.push(`/${Routes.plan}`)}
                   >
                     <PlusIcon />
                   </DaySummaryContainer.HeaderButtonContainer>
@@ -90,13 +100,13 @@ export const DaySummaryResistance = () => {
 export const DaySummaryCardio = () => {
   return (
     <DaySummaryComponent.Wrapper>
-      <DaySummaryComponent.Icon>1</DaySummaryComponent.Icon>
+      <DaySummaryComponent.Icon>40</DaySummaryComponent.Icon>
       <DaySummaryComponent.TextContainer>
         <DaySummaryComponent.TextContainerUpper>
           Cardio
         </DaySummaryComponent.TextContainerUpper>
         <DaySummaryComponent.TextContainerLower>
-          40 minutes / 400 kCal
+          400 kCal
         </DaySummaryComponent.TextContainerLower>
       </DaySummaryComponent.TextContainer>
     </DaySummaryComponent.Wrapper>

@@ -37,7 +37,7 @@ export const setLocalStorageData = async (
   await localForage.setItem("data", data);
 };
 
-export const fetchLocalStorageExercise = async (): Promise<Exercise[]> => {
+export const fetchLocalStorageExercises = async (): Promise<Exercise[]> => {
   const data: { exercises: Exercise[] } | null = await localForage.getItem(
     "data"
   );

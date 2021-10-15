@@ -57,10 +57,16 @@
     {
       "aoe": ["arms"],
       "defaultValues": { "weight": 18 },
-      "defaultWeight": 16,
+
       "name": "Bicep Curl",
       "type": ["resistance"]
+    },
+    {
+      "aoe": ["whole body"],
+      "defaultValues": { "weight": 11 },
+      "name": "incline walk",
+      "type": ["cardio", "stretches"]
     }
   ],
-  "lastEdited": "2021-10-13T22:40:12.000+10:00"
+  "lastEdited": "2021-10-14T19:01:12.000+10:00"
 }

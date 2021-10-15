@@ -3,7 +3,7 @@ import { DateTime } from "luxon";
 
 import { App } from "../contracts";
 
-export const initialState: App.AppState = {
+const initialState: App.AppState = {
   currentDate: DateTime.now().toISO(),
   initializing: true,
   selectedDate: DateTime.now().toISO(),
@@ -17,9 +17,13 @@ const appSlice = createSlice({
       ...state,
       initializing: payload,
     }),
+    setSelectedDate: (state, { payload }: PayloadAction<string>) => ({
+      ...state,
+      selectedDate: payload,
+    }),
   },
 });
 
-export const { setInitializing } = appSlice.actions;
+export const { setInitializing, setSelectedDate } = appSlice.actions;
 
 export default appSlice.reducer;

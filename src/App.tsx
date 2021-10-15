@@ -1,8 +1,9 @@
 import { useEffect } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import { AppHeader } from "./components";
 import { useAppHooks } from "./hooks";
-import { Homepage } from "./pages";
+import { DailyWorkoutPlanner, Homepage } from "./pages";
 import { ContentContainer, HeaderContainer, RootWrapper } from "./Styles";
 import { checkLocalStorageData } from "./utility";
 
@@ -27,7 +28,11 @@ const App = () => {
         <AppHeader />
       </HeaderContainer>
       <ContentContainer>
-        <Homepage />
+        <Switch>
+          <Route exact component={Homepage} path="/" />
+          <Route exact component={DailyWorkoutPlanner} path="/plan" />
+          <Redirect to="/" />
+        </Switch>
       </ContentContainer>
     </RootWrapper>
   );

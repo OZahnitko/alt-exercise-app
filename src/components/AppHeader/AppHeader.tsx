@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 
-import { MenuIcon } from "../../components";
+import {
+  ChevronIcon,
+  ExerciseCategoriesPicker,
+  MenuIcon,
+} from "../../components";
+import { ChevronIconDirection, Routes } from "../../contracts";
 import {
   AppHeaderContent,
   AppHeaderControls,
@@ -11,6 +17,9 @@ import { fetchLocalStorageUsername } from "../../utility";
 
 const AppHeader = () => {
   const [username, setUsername] = useState<string | null>(null);
+
+  const history = useHistory();
+  const location = useLocation();
 
   const handleFetchUsername = async () => {
     const username = await fetchLocalStorageUsername();
@@ -24,75 +33,98 @@ const AppHeader = () => {
 
   return (
     <Wrapper>
-      <AppHeaderControls.Wrapper>
-        <AppHeaderControls.IconContainer onClick={() => console.log("menu")}>
-          <MenuIcon />
-        </AppHeaderControls.IconContainer>
-      </AppHeaderControls.Wrapper>
-      <AppHeaderContent.Wrapper>
-        <AppHeaderContent.AvatarContainer>
-          <AvatarProgress />
-        </AppHeaderContent.AvatarContainer>
-        <AppHeaderContent.TextContainer>
-          <AppHeaderContent.TextContainerUpper>
-            <h2>{username}</h2>
-          </AppHeaderContent.TextContainerUpper>
-          <AppHeaderContent.TextContainerLower>
-            <div
-              style={{
-                alignItems: "center",
-                backgroundColor: "#6588E4",
-                borderRadius: "50%",
-                display: "flex",
-                height: "45px",
-                justifyContent: "center",
-                width: "45px",
-              }}
+      {location.pathname === `/${Routes.home}` && (
+        <>
+          <AppHeaderControls.Wrapper>
+            <AppHeaderControls.IconContainer
+              onClick={() => console.log("menu")}
             >
-              30
-            </div>
-            <div
-              style={{
-                alignItems: "center",
-                backgroundColor: "#6588E4",
-                borderRadius: "50%",
-                display: "flex",
-                height: "45px",
-                justifyContent: "center",
-                width: "45px",
-              }}
+              <MenuIcon />
+            </AppHeaderControls.IconContainer>
+          </AppHeaderControls.Wrapper>
+          <AppHeaderContent.Wrapper>
+            <AppHeaderContent.AvatarContainer>
+              <AvatarProgress />
+            </AppHeaderContent.AvatarContainer>
+            <AppHeaderContent.TextContainer>
+              <AppHeaderContent.TextContainerUpper>
+                <h2>{username}</h2>
+              </AppHeaderContent.TextContainerUpper>
+              <AppHeaderContent.TextContainerLower>
+                <div
+                  style={{
+                    alignItems: "center",
+                    backgroundColor: "#6588E4",
+                    borderRadius: "50%",
+                    display: "flex",
+                    height: "45px",
+                    justifyContent: "center",
+                    width: "45px",
+                  }}
+                >
+                  30
+                </div>
+                <div
+                  style={{
+                    alignItems: "center",
+                    backgroundColor: "#6588E4",
+                    borderRadius: "50%",
+                    display: "flex",
+                    height: "45px",
+                    justifyContent: "center",
+                    width: "45px",
+                  }}
+                >
+                  400
+                </div>
+                <div
+                  style={{
+                    alignItems: "center",
+                    backgroundColor: "#6588E4",
+                    borderRadius: "50%",
+                    display: "flex",
+                    height: "45px",
+                    justifyContent: "center",
+                    width: "45px",
+                  }}
+                >
+                  3
+                </div>
+                <div
+                  style={{
+                    alignItems: "center",
+                    backgroundColor: "#6588E4",
+                    borderRadius: "50%",
+                    display: "flex",
+                    height: "45px",
+                    justifyContent: "center",
+                    width: "45px",
+                  }}
+                >
+                  13
+                </div>
+              </AppHeaderContent.TextContainerLower>
+            </AppHeaderContent.TextContainer>
+          </AppHeaderContent.Wrapper>
+        </>
+      )}
+      {location.pathname === `/${Routes.plan}` && (
+        <>
+          <AppHeaderControls.Wrapper>
+            <AppHeaderControls.IconContainer
+              onClick={() => history.push(`/${Routes.home}`)}
             >
-              400
-            </div>
-            <div
-              style={{
-                alignItems: "center",
-                backgroundColor: "#6588E4",
-                borderRadius: "50%",
-                display: "flex",
-                height: "45px",
-                justifyContent: "center",
-                width: "45px",
-              }}
-            >
-              3
-            </div>
-            <div
-              style={{
-                alignItems: "center",
-                backgroundColor: "#6588E4",
-                borderRadius: "50%",
-                display: "flex",
-                height: "45px",
-                justifyContent: "center",
-                width: "45px",
-              }}
-            >
-              13
-            </div>
-          </AppHeaderContent.TextContainerLower>
-        </AppHeaderContent.TextContainer>
-      </AppHeaderContent.Wrapper>
+              <ChevronIcon direction={ChevronIconDirection.left} />
+            </AppHeaderControls.IconContainer>
+          </AppHeaderControls.Wrapper>
+          <AppHeaderContent.Wrapper>
+            <AppHeaderContent.TextContainer>
+              <h2>Create New Workout</h2>
+            </AppHeaderContent.TextContainer>
+          </AppHeaderContent.Wrapper>
+          <ExerciseCategoriesPicker />
+        </>
+      )}
     </Wrapper>
   );
 };

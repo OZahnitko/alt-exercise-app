@@ -1,3 +1,4 @@
+import { TextField } from "@mui/material";
 import styled from "styled-components";
 
 // Wrapper
@@ -23,6 +24,14 @@ export const AppHeaderControls = {
 export const AppHeaderContent = {
   AvatarContainer: styled.div`
     margin-left: 1rem;
+    margin-right: 1rem;
+  `,
+  InputContainer: styled.div`
+    margin: 0 1rem 1rem 1rem;
+
+    & :last-child {
+      margin-bottom: 0;
+    }
   `,
   TextContainer: styled.div`
     display: flex;
@@ -31,8 +40,6 @@ export const AppHeaderContent = {
     flex-direction: column;
 
     justify-content: space-between;
-
-    margin-left: 1rem;
 
     word-break: break-word;
   `,
@@ -72,3 +79,32 @@ export const StyledAvatarProgress = {
     justify-content: center;
   `,
 };
+
+export const StyledTextField = styled(TextField)`
+  & .MuiFormLabel-root {
+    color: #8c8980;
+
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+  }
+
+  & .MuiInputBase-input {
+    color: #0d253f;
+
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+
+    ::placeholder {
+    }
+  }
+
+  & .MuiInput-underline:before {
+    border-bottom: 1px solid #6588e4;
+  }
+
+  & .MuiInput-underline:after {
+    border-bottom: 2px solid #e46472;
+  }
+
+  margin-bottom: 0.5rem;
+`;

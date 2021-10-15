@@ -1,14 +1,20 @@
 import { useAppDispatch, useAppSelector } from ".";
-import { setInitializing } from "../store";
+import { App } from "../contracts";
+import { RootState, setInitializing, setSelectedDate } from "../store";
 
 export const useAppHooks = () => {
   const dispatch = useAppDispatch();
 
-  const state = useAppSelector(({ app }) => app);
-
   return {
-    setInitializing: (initializingState: boolean) =>
+    currentDate: useAppSelector(
+      ({ app: { currentDate } }: RootState) => currentDate
+    ),
+    selectedDate: useAppSelector(
+      ({ app: { selectedDate } }: RootState) => selectedDate
+    ),
+    setInitializing: (initializingState: App.Initializing) =>
       dispatch(setInitializing(initializingState)),
-    state,
+    setSelectedDate: (selectedDate: App.SelectedDate) =>
+      dispatch(setSelectedDate(selectedDate)),
   };
 };

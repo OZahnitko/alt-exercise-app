@@ -1,10 +1,17 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 
 import appReducer from "./appSlice";
+import dailyWorkoutPlannerReducer from "./dailyWorkoutPlannerSlice";
+import exercisesReducer from "./exercisesSlice";
 import userReducer from "./userSlice";
 
 export const store = configureStore({
-  reducer: { app: appReducer, user: userReducer },
+  reducer: {
+    app: appReducer,
+    dailyWorkoutPlanner: dailyWorkoutPlannerReducer,
+    exercises: exercisesReducer,
+    user: userReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
 });
