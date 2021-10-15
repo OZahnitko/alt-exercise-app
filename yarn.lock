@@ -1586,6 +1586,7 @@
     prop-types "^15.7.2"
 
 "@mui/styled-engine-sc@^5.0.3", "@mui/styled-engine@^5.0.1", "@mui/styled-engine@npm:@mui/styled-engine-sc@latest":
+  name "@mui/styled-engine"
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@mui/styled-engine-sc/-/styled-engine-sc-5.0.3.tgz#cb6bb674bfbc447db1a4aa095df5f676dd899438"
   integrity sha512-Fe3VxYbZMQg/9G9NiF092FpeDAgu90jUgiTzeIUqRNPBgW85Q/EP1uECUAtTG85HPRtkl6iXPUE8oAWxxmxl9A==
@@ -9806,6 +9807,11 @@ react-swipe@^6.0.4:
     lodash.isequal "^4.5.0"
     prop-types "^15.6.0"
     swipe-js-iso "^2.1.5"
+
+react-swipeable@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/react-swipeable/-/react-swipeable-6.2.0.tgz#057271cb7a6fb4af9d2a3f6d80ccdf33e2f64d47"
+  integrity sha512-nWQ8dEM8e/uswZLSIkXUsAnQmnX4MTcryOHBQIQYRMJFDpgDBSiVbKsz/BZVCIScF4NtJh16oyxwaNOepR6xSw==
 
 react-transition-group@^4.4.2:
   version "4.4.2"

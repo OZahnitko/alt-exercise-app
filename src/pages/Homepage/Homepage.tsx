@@ -53,7 +53,7 @@ const Homepage = () => {
                   <DaySummaryContainer.HeaderButtonContainer
                     onClick={() => history.push(`/${Routes.plan}`)}
                   >
-                    <PlusIcon />
+                    <PlusIcon color="FFF9EB" />
                   </DaySummaryContainer.HeaderButtonContainer>
                   {DateTime.fromISO(day).weekday ===
                     DateTime.fromISO(currentDate).weekday && (

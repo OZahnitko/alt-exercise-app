@@ -14,16 +14,24 @@ export const Wrapper = styled.div`
 
 // Exercise List
 
+interface ExerciseListContainerCardProps {
+  expanded: boolean;
+}
+
 export const ExerciseListContainer = {
-  Card: styled.div`
-    border: 2px solid green;
+  Card: styled.div<ExerciseListContainerCardProps>`
+    background-color: #6588e4;
     border-radius: 35px;
 
-    height: 15rem;
+    color: #fff9eb;
+
+    height: 10rem;
 
     padding: 1rem;
 
-    width: calc((100% - 1rem) / 2);
+    user-select: none;
+
+    width: ${(props) => (props.expanded ? "100%" : "calc((100% - 1rem) / 2)")};
   `,
   Wrapper: styled.div`
     display: flex;

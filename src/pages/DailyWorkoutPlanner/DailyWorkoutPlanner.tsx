@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useSwipeable } from "react-swipeable";
+
 import { Exercise } from "../../contracts";
 import { useExercisesHooks, useDailyWorkoutPlannerHooks } from "../../hooks";
 import { ExerciseListContainer, Wrapper } from "./Styles";
@@ -31,22 +34,10 @@ interface ExerciseListProps {
 }
 
 export const ExerciseList = ({ exercises }: ExerciseListProps) => {
-  const { addExercise, removeExercise, selectedWorkoutExercises } =
-    useDailyWorkoutPlannerHooks();
-
   return (
     <ExerciseListContainer.Wrapper>
       {exercises.map((exercise) => (
-        <ExerciseListContainer.Card
-          key={exercise.name}
-          onClick={() =>
-            selectedWorkoutExercises.find((e) => e.name === exercise.name)
-              ? removeExercise(exercise)
-              : addExercise(exercise)
-          }
-        >
-          <ExerciseCard exercise={exercise} />
-        </ExerciseListContainer.Card>
+        <ExerciseCard exercise={exercise} key={exercise.name} />
       ))}
     </ExerciseListContainer.Wrapper>
   );
@@ -57,5 +48,27 @@ interface ExerciseCardProps {
 }
 
 export const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
-  return <div>{exercise.name}</div>;
+  const [expanded, setExpanded] = useState<boolean>(false);
+
+  const handlers = useSwipeable({
+    onSwipedRight: () => setExpanded(() => true),
+    onSwipedLeft: () => setExpanded(() => false),
+  });
+
+  const { addExercise, removeExercise, selectedWorkoutExercises } =
+    useDailyWorkoutPlannerHooks();
+
+  return (
+    <ExerciseListContainer.Card
+      expanded={expanded}
+      onClick={() =>
+        selectedWorkoutExercises.find((e) => e.name === exercise.name)
+          ? removeExercise(exercise)
+          : addExercise(exercise)
+      }
+      {...handlers}
+    >
+      <div>{exercise.name}</div>
+    </ExerciseListContainer.Card>
+  );
 };
