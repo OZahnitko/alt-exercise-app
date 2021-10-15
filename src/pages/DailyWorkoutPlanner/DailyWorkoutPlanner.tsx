@@ -4,6 +4,7 @@ import { useSwipeable } from "react-swipeable";
 import { Exercise } from "../../contracts";
 import { useExercisesHooks, useDailyWorkoutPlannerHooks } from "../../hooks";
 import { ExerciseListContainer, Wrapper } from "./Styles";
+import { formatExerciseName } from "../../utility";
 
 const DailyWorkoutPlanner = () => {
   const { selectedResistanceAOE, selectedExerciseType } =
@@ -36,8 +37,8 @@ interface ExerciseListProps {
 export const ExerciseList = ({ exercises }: ExerciseListProps) => {
   return (
     <ExerciseListContainer.Wrapper>
-      {exercises.map((exercise) => (
-        <ExerciseCard exercise={exercise} key={exercise.name} />
+      {exercises.map((exercise, index) => (
+        <ExerciseCard exercise={exercise} index={index} key={exercise.name} />
       ))}
     </ExerciseListContainer.Wrapper>
   );
@@ -45,9 +46,10 @@ export const ExerciseList = ({ exercises }: ExerciseListProps) => {
 
 interface ExerciseCardProps {
   exercise: Exercise;
+  index: number;
 }
 
-export const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
+export const ExerciseCard = ({ exercise, index }: ExerciseCardProps) => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
   const handlers = useSwipeable({
@@ -61,6 +63,7 @@ export const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
   return (
     <ExerciseListContainer.Card
       expanded={expanded}
+      index={index}
       onClick={() =>
         selectedWorkoutExercises.find((e) => e.name === exercise.name)
           ? removeExercise(exercise)
@@ -74,7 +77,7 @@ export const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
       {expanded ? (
         <ExerciseCardExpandedContent exercise={exercise} />
       ) : (
-        <h2>{exercise.name}</h2>
+        <h2>{formatExerciseName(exercise.name)}</h2>
       )}
     </ExerciseListContainer.Card>
   );

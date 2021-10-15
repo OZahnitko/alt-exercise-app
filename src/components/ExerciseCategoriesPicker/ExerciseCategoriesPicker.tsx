@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
+import { CheckIcon } from "../../components";
 import { useDailyWorkoutPlannerHooks, useExercisesHooks } from "../../hooks";
 import { CategoryChipContainer, Wrapper } from "./Styles";
+import { theme } from "../../theme";
 import {
   fetchLocalStorageExercises,
   reduceUniqueExerciseAreasOfEffect,
@@ -12,8 +14,11 @@ const ExerciseCategoriesPicker = () => {
   const [exerciseAreas, setExerciseAreas] = useState<string[]>([]);
   const [exerciseTypes, setExerciseTypes] = useState<string[]>([]);
 
-  const { selectedExerciseType, selectedResistanceAOE } =
-    useDailyWorkoutPlannerHooks();
+  const {
+    selectedExerciseType,
+    selectedResistanceAOE,
+    setSelectedResistanceAOE,
+  } = useDailyWorkoutPlannerHooks();
   const { exercises, setExercises } = useExercisesHooks();
 
   const handleLoadExerciseList = async () => {
@@ -47,13 +52,25 @@ const ExerciseCategoriesPicker = () => {
           .map((category) => (
             <CategoryChip category={category} key={category} />
           ))}
-        {selectedExerciseType === "resistance"
-          ? exerciseAreas
+        {selectedExerciseType === "resistance" ? (
+          <>
+            {exerciseAreas
               .filter((aoe) =>
                 selectedResistanceAOE ? aoe === selectedResistanceAOE : aoe
               )
-              .map((area) => <ResistanceAOEChip areaName={area} key={area} />)
-          : null}
+              .map((area) => (
+                <ResistanceAOEChip areaName={area} key={area} />
+              ))}
+            {selectedResistanceAOE && (
+              <CategoryChipContainer.Wrapper
+                isIcon
+                onClick={() => setSelectedResistanceAOE(null)}
+              >
+                <CheckIcon color={theme.colors.earlyDawn} />
+              </CategoryChipContainer.Wrapper>
+            )}
+          </>
+        ) : null}
       </Wrapper>
     </>
   );

@@ -23,3 +23,11 @@ export const reduceUniqueExerciseTypes = (exercises: Exercise[]): string[] => {
     a.localeCompare(b)
   );
 };
+
+export const formatExerciseName = (exerciseName: string) => {
+  return exerciseName
+    .toLowerCase()
+    .split(" ")
+    .map((word) => `${word.slice(0, 1).toUpperCase()}${word.slice(1)}`)
+    .join(" ");
+};
