@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -16,6 +17,7 @@ export const Wrapper = styled.div`
 
 interface ExerciseListContainerCardProps {
   expanded: boolean;
+  index: number;
   selected: boolean;
 }
 
@@ -23,8 +25,8 @@ export const ExerciseListContainer = {
   Card: styled.div<ExerciseListContainerCardProps>`
     align-items: center;
 
-    background-color: #6588e4;
-    border: 4px solid #${(props) => (props.selected ? "F9BE7C" : "6588e4")};
+    background-color: #${(props) => theme.colors.tileColors[props.index % 3]};
+    border: 4px solid #${(props) => (props.selected ? "F9BE7C" : theme.colors.tileColors[props.index % 3])};
     border-radius: 35px;
 
     color: #fff9eb;
@@ -36,6 +38,8 @@ export const ExerciseListContainer = {
     justify-content: center;
 
     padding: 1rem;
+
+    text-align: center;
 
     user-select: none;
 
